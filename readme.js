@@ -1,5 +1,6 @@
-// Variable 
+// NPM package that was installed - package.json
 const inquirer = require("inquirer");
+// Calling fs require NMP package that in in JS
 const fs = require('fs');
 
 // * The generated README includes the following sections: 
@@ -16,7 +17,7 @@ const fs = require('fs');
 
 // * The generated README includes 1 badge that's specific to the repository.
 
-// User prompting for info
+// Prompts user for info
 inquirer.prompt([
   {
     type: "input",
@@ -64,14 +65,14 @@ inquirer.prompt([
     message: "What is your email address?"
   }
 ])
-// User information that is entered 
+// User information that is entered takes user input and writes it to the page
   .then(function(userAnswers){
     console.log(userAnswers);
 
     var filename = (userAnswers.title + "log.md");
-
+    // Sets readMe var equal to the generateReadMe functions with userAnswers as the input
     var readMe = generateReadMe(userAnswers)
-
+    // fs.writeFile writes the user information onto the page - gives confirmation if correct
     fs.writeFile(filename, readMe, function(err){
         if (err){
             return console.log(err);
@@ -79,7 +80,7 @@ inquirer.prompt([
         console.log("Success! File was written to log.md")
     })
 })
-
+// Format for read me - pulls info from prompts and places it under each heading.
 function generateReadMe(userAnswers){
     let readMe = `*
      # [${userAnswers.title}](#foo)
@@ -155,6 +156,7 @@ function generateReadMe(userAnswers){
     
 
     `
+    // Return readMe variable
     return readMe
 }
 
